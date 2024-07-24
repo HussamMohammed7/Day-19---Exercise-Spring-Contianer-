@@ -1,0 +1,52 @@
+Q1:
+this question only has one answer because there is only one method initialized in the Spring container by Been annotation.
+
+the output is :  
+hey from message1
+
+---------------------------------------------------------------------------------------------------------------------------
+Q2:
+this question will only have one output , because getMessag2 rely on Qualifier which is getMessage1.
+
+the output : 
+hey from message1
+hey from message2
+---------------------------------------------------------------------------------------------------------------------------
+Q3:
+this question has two possible results, because there are 3 methods and two of them depend on two methods by using the Qualifier,  getMessage2 will not print until getmessage3 prints it so getMessage1 could be printed before getmessage3 or after getMessage2 and getMessage3 print it. 
+
+the first output : 
+hey from message1
+hey from message3
+hey from message2
+
+the second output : 
+hey from message3
+hey from message2
+hey from message1
+---------------------------------------------------------------------------------------------------------------------------
+Q4:
+this question has two possible results, because there are 4 methods and two of them depend on two methods by using the Qualifier,  getMessage2 will not print until getmessage3 prints it, and mainController will not print until getMessage 1 print.
+
+the first output : 
+
+hey from message1
+hey from MainController
+hey from message3
+hey from message2
+
+the second one : 
+
+hey from message3
+hey from message2
+hey from message1
+hey from MainController
+
+----------------------------------------------------------------------------------------------------------------------------------
+Q5- 
+I believe this question has one possible output because getMessage1 needs parameter mainController, and mainController depend on qualifier 2 that is on getMessage2, and getMessage2 depends on getMessage 3 , so the first one to print should be getMessage3 .
+
+hey from message3
+hey from message2
+hey from MainController
+hey from message1
